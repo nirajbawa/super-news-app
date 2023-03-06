@@ -85,7 +85,7 @@ export class News extends Component {
     try {
       this.props.setProgress(10)
       let url = `${process.env.REACT_APP_API_URL}?url=https://newsapi.org/v2/top-headlines?country=${this.props.coutryCode}|category=${this.props.category}|apiKey=${this.state.apiKey}|page=${this.state.pageNum}|pagesize=${this.state.pageSize}`;
-
+      console.log(url);
       let data = await fetch(url);
       this.props.setProgress(30);
       if (data.status !== 200)
@@ -97,6 +97,8 @@ export class News extends Component {
         this.props.setProgress(50);
 
       let parsedData = await data.json();
+
+      console.log(parsedData);
 
       this.props.setProgress(60);
 
