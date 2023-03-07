@@ -12,7 +12,7 @@ export class News extends Component {
 
   constructor(props) {
     super();
-    console.log("constructor");
+
     this.state = {
       article: [],
       pageNum: 1,
@@ -42,7 +42,7 @@ export class News extends Component {
 
   
   setNewApiKey=()=>{
-    console.log("setNewApiKey");
+
     let keys = [process.env.REACT_APP_NEWS_API_1, process.env.REACT_APP_NEWS_API_2, process.env.REACT_APP_NEWS_API_3, process.env.REACT_APP_NEWS_API_1, process.env.REACT_APP_NEWS_API_4, process.env.REACT_APP_NEWS_API_5];
 
     if(this.state.keyNum<5)
@@ -61,7 +61,7 @@ export class News extends Component {
   }
 
   restState = ()=>{
-    console.log("restState");
+  
     this.setState({
       article: [],
       pageNum: 1,
@@ -74,16 +74,15 @@ export class News extends Component {
   }
 
   async setloadingfalse() {
-    console.log("componentDidMount");
+  
     this.setState({ loading: false });
   }
 
   fetchPost = async () => {
     try {
-      console.log("fetchPost");
+   
       this.props.setProgress(10)
       let url = `${process.env.REACT_APP_API_URL}?url=https://newsapi.org/v2/top-headlines?country=${this.props.coutryCode}|category=${this.props.category}|apiKey=${this.state.apiKey}|page=${this.state.pageNum}|pagesize=${this.state.pageSize}`;
-      console.log(url);
       let data = await fetch(url);
       this.props.setProgress(30);
       if (data.status !== 200)
@@ -96,7 +95,7 @@ export class News extends Component {
 
       let parsedData = await data.json();
 
-      console.log(parsedData);
+
 
       this.props.setProgress(60);
 
@@ -115,12 +114,10 @@ export class News extends Component {
 
 
   updatePosts = async () => {
-    console.log("updatePosts");
+  
     this.setState({
       pageNum: (this.state.pageNum + 1)
     }, async () => {
-      console.log(this.state.article.length);
-      console.log(this.state.totalArticles);
       await this.fetchPost();
     });
 

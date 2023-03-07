@@ -50,7 +50,6 @@ export default class App extends Component {
   
 
   setfisrtloadfalse=()=>{
-    console.log("setfisrtloadfalse");
     this.fetchCountry();
     this.setState({
       firstload:false
@@ -58,11 +57,9 @@ export default class App extends Component {
   }
 
   fetchCountry = async()=>{
-    console.log("fetchCountry");
     let res = await fetch("https://ipapi.co/json/");
     let data = await res.json();
     this.setState({coutryCode:data.country_code.toLocaleLowerCase()}, ()=>{
-      console.log("fetchCountry in");
       this.refs.child.fetchPost();
       this.refs.child.setloadingfalse();
       this.setState({
