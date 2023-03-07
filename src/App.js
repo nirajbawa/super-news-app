@@ -20,7 +20,7 @@ export default class App extends Component {
       firstload:false,
       progress:0
     }
-    document.body.style.backgroundColor = this.state.theme==="light"?"white":"#070809";
+    document.body.style.backgroundColor = this.state.theme==="light"?"#ffffff":"#212529";
     document.querySelector("meta[name='theme-color']").setAttribute("content", this.state.theme==="light"?"#ffffff":"#070809")
 
     this.codes = ["ae","ar","at","au","be","bg","br","ca","ch","cn","co","cu","cz","de","eg","fr","gb","gr","hk","hu","id","ie","il","in","it","jp","kr","lt","lv","ma","mx","my","ng","nl","no","nz","ph","pl","pt","ro","rs","ru","sa","se","sg","si","sk","th","tr","tw","ua","us","ve","za"];
@@ -80,7 +80,7 @@ export default class App extends Component {
         theme:"dark"
       });
       localStorage.setItem("theme", "dark");
-      document.body.style.backgroundColor = "#070809";
+      document.body.style.backgroundColor = "#212529";
      document.querySelector("meta[name='theme-color']").setAttribute("content", "#212529");
     }
     else{
