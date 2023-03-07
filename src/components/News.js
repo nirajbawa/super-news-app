@@ -12,6 +12,7 @@ export class News extends Component {
 
   constructor(props) {
     super();
+    console.log("constructor");
     this.state = {
       article: [],
       pageNum: 1,
@@ -41,6 +42,7 @@ export class News extends Component {
 
   
   setNewApiKey=()=>{
+    console.log("setNewApiKey");
     let keys = [process.env.REACT_APP_NEWS_API_1, process.env.REACT_APP_NEWS_API_2, process.env.REACT_APP_NEWS_API_3, process.env.REACT_APP_NEWS_API_1, process.env.REACT_APP_NEWS_API_4, process.env.REACT_APP_NEWS_API_5];
 
     if(this.state.keyNum<5)
@@ -59,6 +61,7 @@ export class News extends Component {
   }
 
   restState = ()=>{
+    console.log("restState");
     this.setState({
       article: [],
       pageNum: 1,
@@ -70,19 +73,14 @@ export class News extends Component {
     });
   }
 
-  async componentDidMount() {
-    this.setState({ loading: true });
-    await this.props.fetchCountry();
-
-    if (this.props.firstload) {
-      await this.fetchPost();
-    }
+  async setloadingfalse() {
+    console.log("componentDidMount");
     this.setState({ loading: false });
-
   }
 
   fetchPost = async () => {
     try {
+      console.log("fetchPost");
       this.props.setProgress(10)
       let url = `${process.env.REACT_APP_API_URL}?url=https://newsapi.org/v2/top-headlines?country=${this.props.coutryCode}|category=${this.props.category}|apiKey=${this.state.apiKey}|page=${this.state.pageNum}|pagesize=${this.state.pageSize}`;
       console.log(url);
@@ -117,6 +115,7 @@ export class News extends Component {
 
 
   updatePosts = async () => {
+    console.log("updatePosts");
     this.setState({
       pageNum: (this.state.pageNum + 1)
     }, async () => {
@@ -124,8 +123,6 @@ export class News extends Component {
       console.log(this.state.totalArticles);
       await this.fetchPost();
     });
-
-
 
 
   }

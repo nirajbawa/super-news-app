@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 export default class NewsItem extends Component {
   componentDidMount()
   {
+    console.log("componentDidMount");
     AOS.init({
       offset: 0,
       delay: 0, // values from 0 to 3000, with step 50ms
@@ -14,6 +15,7 @@ export default class NewsItem extends Component {
     });
   }
   componentDidUpdate(){
+    console.log("componentDidUpdate");
     AOS.init({
       offset: 0,
       delay: 0, // values from 0 to 3000, with step 50ms
