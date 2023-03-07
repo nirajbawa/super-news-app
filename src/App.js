@@ -80,7 +80,7 @@ export default class App extends Component {
         theme:"dark"
       });
       localStorage.setItem("theme", "dark");
-     document.querySelector("meta[name='theme-color']").setAttribute("content", "#ffffff");
+     document.querySelector("meta[name='theme-color']").setAttribute("content", "#070809");
     }
     else{
       this.setState({
@@ -88,7 +88,7 @@ export default class App extends Component {
       });
       localStorage.setItem("theme", "light");
       document.body.style.backgroundColor = "white";
-      document.querySelector("meta[name='theme-color']").setAttribute("content", "#070809");
+      document.querySelector("meta[name='theme-color']").setAttribute("content", "#ffffff");
     }
     
   }
